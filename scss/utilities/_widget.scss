@@ -1,0 +1,36 @@
+//widgets
+
+//card
+.card{
+
+    width: 350px;
+    height:150px;
+    border: 1px solid;
+    display:flex;
+    float:left;
+}
+.round{
+    margin-top:30px;
+    margin-left:10px;
+    border-radius:50%;
+    height: 100px;
+    width: 100px;
+    
+}
+p{
+    display:flex;
+    flex-direction: column;
+    margin:10px;
+    width: 90px;
+    height: 20px;
+    align-content:space-between;
+    flex-wrap:wrap;
+}
+
+.makeCol{
+    border: 1px solid red;
+    width: 240px;
+    display:flex;
+    flex-direction:column;
+    margin-top:30px;
+}
