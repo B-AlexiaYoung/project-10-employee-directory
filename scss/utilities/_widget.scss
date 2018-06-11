@@ -2,35 +2,81 @@
 
 //card
 .card{
-
-    width: 350px;
+    font-size: 14px;
+    width: 320px;
     height:150px;
     border: 1px solid;
-    display:flex;
-    float:left;
+    display:inline-flex;
+    //float:left;
+    //margin:20px 30px;
 }
 .round{
     margin-top:30px;
     margin-left:10px;
     border-radius:50%;
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     
 }
 p{
     display:flex;
-    flex-direction: column;
+    //flex-direction: row;
     margin:10px;
-    width: 90px;
+    width: 200px;
     height: 20px;
-    align-content:space-between;
-    flex-wrap:wrap;
+    //align-content:space-between;
+    //flex-wrap:wrap;
 }
 
 .makeCol{
     border: 1px solid red;
-    width: 240px;
+    width: 220px;
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
+    flex-wrap:wrap;
     margin-top:30px;
+}
+.nameBold{
+    font-weight:600;
+    display:inline-block;
+}
+#modal{
+    width:100%;
+    height:100%;
+    opacity:1;
+    z-index:1000;
+    display:none;
+    position: fixed; 
+    left: 0;
+    top: 0;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+
+
+}
+#modalDetails {
+    background-color: whitesmoke;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 10px;
+    border: 1px solid #888;
+    width: 30%; 
+    height:60%;
+    display:none;
+    z-index:1001;
+}
+
+#close {
+    color:grey;
+    font-size: 20px;
+    font-weight: 700;
+    float: right;
+
+}
+
+#close:hover,
+#close:focus {
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
 }
