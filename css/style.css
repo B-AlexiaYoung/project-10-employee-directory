@@ -12,6 +12,13 @@
   height: 80px;
   width: 80px; }
 
+.detailRound {
+  margin-top: 20px;
+  margin-left: 75px;
+  border-radius: 50%;
+  height: 90px;
+  width: 90px; }
+
 p {
   display: flex;
   margin: 10px;
@@ -19,7 +26,6 @@ p {
   height: 20px; }
 
 .makeCol {
-  border: 1px solid red;
   width: 220px;
   display: flex;
   flex-direction: row;
@@ -52,7 +58,9 @@ p {
   width: 30%;
   height: 60%;
   display: none;
-  z-index: 1001; }
+  z-index: 1001;
+  border-radius: 10px;
+  font-size: 14px; }
 
 #close {
   color: grey;
@@ -91,5 +99,25 @@ main {
 
 .card:hover {
   cursor: pointer; }
+
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  align-content: center; }
+
+.nav1 {
+  border: none;
+  display: inline-flex;
+  width: 60px;
+  height: 20px;
+  background-color: whitesmoke; }
+
+.nav2 {
+  border: none;
+  display: inline-flex;
+  width: 60px;
+  height: 20px;
+  margin-left: 119px;
+  background-color: whitesmoke; }
 
 /*# sourceMappingURL=style.css.map */

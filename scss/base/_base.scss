@@ -31,3 +31,29 @@ main{
 .card:hover{
     cursor:pointer;
 }
+.navContainer{
+    display:flex;
+    flex-direction:row;
+    align-content: center;
+    // background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    // opacity:1;
+
+}
+.nav1{
+    border: none;
+    display: inline-flex;
+    width:60px;
+    height:20px;
+    background-color:whitesmoke;
+    
+
+}
+.nav2{
+    border: none;
+    display:inline-flex;
+    width:60px;
+    height:20px;
+    margin-left:119px;
+    background-color:whitesmoke;
+
+}

@@ -1,14 +1,17 @@
 /*jshint esversion: 6 */
- let image= [];
-
+let personDetails=[];
 (() =>{
     const $employeeData = "https://randomuser.me/api/?results=12&nat=us";
     function displayEmployees(data){
+        personDetails=data.results;
+        //console.log(personDetails);
+
        $.each(data.results, function(i, employee){
            // create div and append to DOM
         let list = document.createElement('div');
         document.getElementById("main").appendChild(list);
         list.classList.add('card');
+        list.setAttribute("data-cardnumber", i);
         // create image and append to div class card
          image= document.createElement("img");
         image.src=employee.picture.thumbnail;
@@ -28,10 +31,10 @@
         let lastNameUpper= employee.name.last;
         
 
-        firstNameUpper= firstNameUpper.charAt(0).toUpperCase() + firstNameUpper.slice(1);
-        lastNameUpper= lastNameUpper.charAt(0).toUpperCase() + lastNameUpper.slice(1);
-        let nameUpper= firstNameUpper + " " + lastNameUpper;
-        name.innerText= nameUpper;
+        // firstNameUpper= firstNameUpper.charAt(0).toUpperCase() + firstNameUpper.slice(1);
+        // lastNameUpper= lastNameUpper.charAt(0).toUpperCase() + lastNameUpper.slice(1);
+        // let nameUpper= firstNameUpper + " " + lastNameUpper;
+        name.innerText= capital(firstNameUpper, lastNameUpper);
         detailsDiv.appendChild(name).classList.add("nameBold");
         //console.log(name);
 
@@ -52,43 +55,173 @@
        
         }
 //function to capitalise city name
-        function titleCase(city){
-           let str= city.split(' ');
-           for (i=0; i< str.length; i++){
-              str[i]= str[i].charAt(0).toUpperCase() + str[i].slice(1);
+        // function titleCase(city){
+        //    let str= city.split(' ');
+        //    for (i=0; i< str.length; i++){
+        //       str[i]= str[i].charAt(0).toUpperCase() + str[i].slice(1);
 
-           }
-           return str.join(' ');
-        }
+        //    }
+        //    return str.join(' ');
+        // }
 
 // get info from api
     $.getJSON($employeeData, displayEmployees);
+    
       
 })();
+//function to capitalise city name and concatenate
+function capital(firstNameUpper, lastNameUpper){
+    firstNameUpper= firstNameUpper.charAt(0).toUpperCase() + firstNameUpper.slice(1);
+    lastNameUpper= lastNameUpper.charAt(0).toUpperCase() + lastNameUpper.slice(1);
+    let nameUpper= firstNameUpper + " " + lastNameUpper;
+    return nameUpper;
+}
 
 
+//function to capitalise city name
+function titleCase(city){
+    let str= city.split(' ');
+    for (i=0; i< str.length; i++){
+       str[i]= str[i].charAt(0).toUpperCase() + str[i].slice(1);
+
+    }
+    return str.join(' ');
+ }
+ function address(cardNum){
+    let address=  personDetails[cardNum].location.street + ", " + personDetails[cardNum].location.state +" "+ personDetails[cardNum].location.postcode;
+console.log(titleCase(address));
+    return titleCase(address); 
+
+}
 //listener on cards to prompt overlay
 let modal = document.getElementById("modal");
 let modalDetails= document.getElementById("modalDetails");
 //let span = document.getElementById("close");
 
-function moreDetails(){
+function moreDetails(cardNum){
+    //clear modal of children
+     while (modalDetails.firstChild) {
+         modalDetails.removeChild(modalDetails.firstChild);
+      }
+     //add new children for employee card
+     let span = document.createElement('span');
+     span.innerHTML="&times;";
+     span.setAttribute("id","close");
+     modalDetails.appendChild(span);
+        let detailImage = document.createElement("img");
+
+        detailImage.src=personDetails[cardNum].picture.thumbnail;
+        detailImage.classList.add("detailRound");
+        modalDetails.appendChild(detailImage);
+
+
+    //insert into modal employee name
+    let name= document.createElement("p");
+    let firstNameUpper= personDetails[cardNum].name.first;
+    let lastNameUpper= personDetails[cardNum].name.last;
+    name.innerText= capital(firstNameUpper, lastNameUpper);
+    modalDetails.appendChild(name).classList.add("nameBold");
+
+
+    //insert into modal employee email
+    let email = document.createElement("p");
+        email.innerText= personDetails[cardNum].email;
+        modalDetails.appendChild(email);
+
+        //capitalize city name
+        let city = document.createElement("p");
+
+        city.innerText= titleCase(personDetails[cardNum].location.city);
+        modalDetails.appendChild(city);
+        //emCity = employee.location.city; 
+        let line= document.createElement("hr");
+        modalDetails.appendChild(line);
+     // add phone details
+     let phone= document.createElement("p");
+     phone.innerText= personDetails[cardNum].phone;
+     modalDetails.appendChild(phone);
+     let addr= document.createElement("p");
+     let location= address(cardNum);
+     addr.innerText = location;
+     modalDetails.appendChild(addr);
+
+     // get DOB
+     let dob=document.createElement("p");
+     let smDate=personDetails[cardNum].dob;
+
+     // chop off unneeded bits  and split; then reassemble date
+     smDate=smDate.slice(2, 10).split("-");
+     smDate= smDate[1]+ "/"+ smDate[2] + "/" +smDate[0];
+       console.log(smDate);
+     dob.innerText= smDate;
+    //  console.log(new Date(Date.parse(dob)));
+
+    // prev and next buttons no prev on card 0 no next on card 11
+     modalDetails.appendChild(dob);
+     if( cardNum > 0){
+        let prev=document.createElement("button");
+     modalDetails.appendChild(prev);
+     prev.classList.add("nav1");
+     prev.innerHTML=" < prev";
+      // listener on buttons
+      prev.addEventListener("click",(event)=>{
+        // console.log("going from card " + cardNum + " to card " + cardNum - 1);
+        moreDetails(cardNum - 1);
+     });
+     }
+     if(cardNum <11){
+     let next=document.createElement("button");
+     modalDetails.appendChild(next);
+     next.classList.add("nav2");
+     next.innerHTML="next >";
+     // listener on buttons
+     next.addEventListener("click",(event)=>{
+        //  console.log("going from card " + cardNum + " to card " + cardNum++);
+        moreDetails(cardNum++);
+     });
+     }
+    
+    
+     //listener on overlay close 
+    let close =document.getElementById("close");
+    close.addEventListener("click", (event)=>{
+    modal.style.display="none";
+    modalDetails.style.display="none";
+    });
 
 }
+/*$( document ).ready(function() {
+let cardList=document.getElementsByClassName("card");
+console.log(cardList.length);
+console.log(cardList);*/
+// for( var j=0; j<cardList.length; j++){
+//     console.log(cardlist.length);
+//     cardList[i].addEventListener('click', (moreDetails));
+// }
+// }); 
+
 let cardListener= document.getElementById("main");
     cardListener.addEventListener("click", (event) =>{
         modal.style.display="block";
-        let employeeMore = event.target;
-        moreDetails();
+        let emMore=$(event.target).closest(".card");
+        console.log(emMore[0].getAttribute("data-cardnumber"));
+        let cardNum= emMore[0].getAttribute("data-cardnumber");
+        moreDetails(cardNum);
         modalDetails.style.display="block";
-        console.log("hi");
+        // console.log("hi");
+
+
+
     });
 
 //listener on overlay close 
-let span=document.getElementById("close");
-span.addEventListener("click", (event)=>{
-modal.style.display="none";
-});
+// let span=document.getElementById("close");
+// console.log(span);
+// span.addEventListener("click", (event)=>{
+//     console.log("span");
+// modal.style.display="none";
+// modalDetails.style.display="none";
+// });
  
  
 

@@ -18,6 +18,16 @@
     width: 80px;
     
 }
+.detailRound{
+margin-top:20px;
+margin-left:75px;
+border-radius:50%;
+    height: 90px;
+    width: 90px;
+}
+// .detailRound p{
+//     text-align: center;
+// }
 p{
     display:flex;
     //flex-direction: row;
@@ -29,7 +39,7 @@ p{
 }
 
 .makeCol{
-    border: 1px solid red;
+    //border: 1px solid red;
     width: 220px;
     display:flex;
     flex-direction:row;
@@ -51,7 +61,7 @@ p{
     top: 0;
     overflow: auto; 
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-
+    
 
 
 }
@@ -64,6 +74,8 @@ p{
     height:60%;
     display:none;
     z-index:1001;
+    border-radius:10px;
+    font-size:14px;
 }
 
 #close {
