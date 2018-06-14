@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-// function to load cards onto DOM
+// function to load cards onto DOM   MAJOR FUNCTION
 let personDetails=[];
 (() =>{
     const $employeeData = "https://randomuser.me/api/?results=12&nat=us";
@@ -70,7 +70,6 @@ let personDetails=[];
     //search listener and function
      let search=document.getElementById("search");
          search.addEventListener("keyup",(event) =>{
-             //let search=document.getElementById("search")
              let searchTerm =search.value;
              searchTerm=searchTerm.toLowerCase();
              console.log(personDetails[0].name.first);
@@ -82,8 +81,12 @@ let personDetails=[];
                      console.log(getCard);
                      console.log(personDetails[k].login.username);
                  if(personDetails[k].name.first.indexOf(searchTerm) && personDetails[k].name.last.indexOf(searchTerm) && personDetails[k].login.username.indexOf(searchTerm)){
-                     
-                     getlist[k].style.display="none";
+                    getlist[k].style.display="none";
+
+                 }else{
+                    
+                    getlist[k].style.display="flex";
+
                  }
 
              } //end loop
@@ -91,6 +94,7 @@ let personDetails=[];
     
       
 })(); // displayemployees
+
 //function to capitalise employee  name and concatenate
 function capital(firstNameUpper, lastNameUpper){
     firstNameUpper= firstNameUpper.charAt(0).toUpperCase() + firstNameUpper.slice(1);
@@ -115,6 +119,7 @@ console.log(titleCase(address));
     return titleCase(address); 
 
 }//end address
+
 //listener on cards to prompt overlay
 let modal = document.getElementById("modal");
 let modalDetails= document.getElementById("modalDetails");
@@ -156,7 +161,6 @@ function moreDetails(cardNum){
 
         city.innerText= titleCase(personDetails[cardNum].location.city);
         modalDetails.appendChild(city);
-        //emCity = employee.location.city; 
         let line= document.createElement("hr");
         modalDetails.appendChild(line);
      // add phone details
@@ -177,7 +181,6 @@ function moreDetails(cardNum){
      smDate= smDate[1]+ "/"+ smDate[2] + "/" +smDate[0];
        console.log(smDate);
      dob.innerText= smDate;
-    //  console.log(new Date(Date.parse(dob)));
 
     // prev and next buttons no prev on card 0 no next on card 11
      modalDetails.appendChild(dob);
@@ -188,7 +191,6 @@ function moreDetails(cardNum){
      prev.innerHTML=" < prev";
       // listener on buttons
       prev.addEventListener("click",(event)=>{
-        // console.log("going from card " + cardNum + " to card " + cardNum - 1);
         moreDetails(cardNum - 1);
      });
      }
@@ -214,15 +216,7 @@ function moreDetails(cardNum){
     });
 
 }
-/*$( document ).ready(function() {
-let cardList=document.getElementsByClassName("card");
-console.log(cardList.length);
-console.log(cardList);
-for( var j=0; j<cardList.length; j++){
-    console.log(cardlist.length);
-    cardList[i].addEventListener('click', (moreDetails));
- }
- }); */
+
 
 
 // function change to prev or next card when modal is open
@@ -240,14 +234,7 @@ let cardListener= document.getElementById("main");
 
     });
 
-//listener on overlay close 
-// let span=document.getElementById("close");
-// console.log(span);
-// span.addEventListener("click", (event)=>{
-//     console.log("span");
-// modal.style.display="none";
-// modalDetails.style.display="none";
-// });
+
  
  
 

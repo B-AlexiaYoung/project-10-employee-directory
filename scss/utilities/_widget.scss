@@ -3,13 +3,15 @@
 //card
 .card{
     font-size: 14px;
-    width: 320px;
+    width: 300px;
     height:150px;
     border: 1px solid;
     display:inline-flex;
     border-radius:10px;
-    //float:left;
-    //margin:20px 30px;
+    @include mediaQry(medium){
+        width: 320px;
+ 
+    }
 }
 .round{
     margin-top:30px;
@@ -31,10 +33,10 @@ border-radius:50%;
 // }
 p{
     display:flex;
-    //flex-direction: row;
     margin:10px;
     width: 200px;
     height: 20px;
+    justify-content: center;
     //align-content:space-between;
     //flex-wrap:wrap;
 }
@@ -49,7 +51,9 @@ p{
 }
 .nameBold{
     font-weight:600;
-    display:inline-block;
+   // display:inline-block;
+    //justify-content: center;
+
 }
 #modal{
     width:100%;
@@ -72,14 +76,16 @@ p{
     padding: 10px;
     border: 1px solid #888;
     //width: 30%; 
-    width: 95%;
-    height:60%;
+    width: 75%;
+    height:70%;
     display:none;
     z-index:1001;
     border-radius:10px;
     font-size:14px;
     @include mediaQry(medium){
-        width: 240px;
+        width: 270px;
+        //height:60%;
+
     }
     
 }

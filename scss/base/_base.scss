@@ -17,11 +17,16 @@
     width:100vw;
     height:100vh;
     display:grid;
-    grid-template-columns: 1fr;
-    grid-template-rows:(100px 1fr);
+    grid-template-columns:(1fr) ;
+    grid-template-rows:(115px 1fr);
     grid-template-areas: 
     "header"
-    "main";
+    " main  " ;
+}
+.mainWrapper{
+    @include mediaQry(medium){
+    margin:30px;
+    }
 }
 main{
     display:grid;
@@ -30,6 +35,7 @@ main{
     //grid-template-rows:150px;
     grid-gap: 20px 20px;
 }
+
 .card:hover{
     cursor:pointer;
 }
