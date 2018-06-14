@@ -3,7 +3,8 @@
   width: 320px;
   height: 150px;
   border: 1px solid;
-  display: inline-flex; }
+  display: inline-flex;
+  border-radius: 10px; }
 
 .round {
   margin-top: 30px;
@@ -55,12 +56,15 @@ p {
   /* 15% from the top and centered */
   padding: 10px;
   border: 1px solid #888;
-  width: 30%;
+  width: 95%;
   height: 60%;
   display: none;
   z-index: 1001;
   border-radius: 10px;
   font-size: 14px; }
+  @media (min-width: 767px) {
+    #modalDetails {
+      width: 240px; } }
 
 #close {
   color: grey;
@@ -77,11 +81,13 @@ p {
 .body {
   font-family: 'Zilla Slab', serif; }
 
-.search {
+#search {
   width: 95%;
-  border: 1 px solid; }
+  height: 30px;
+  border: 1 px solid;
+  border-radius: 5px; }
   @media (min-width: 767px) {
-    .search {
+    #search {
       width: 50%; } }
 
 .mainContainer {
@@ -106,18 +112,20 @@ main {
   align-content: center; }
 
 .nav1 {
-  border: none;
+  border: .05px solid grey;
   display: inline-flex;
   width: 60px;
   height: 20px;
-  background-color: whitesmoke; }
+  background-color: whitesmoke;
+  cursor: pointer; }
 
 .nav2 {
-  border: none;
+  border: .05px solid grey;
   display: inline-flex;
   width: 60px;
   height: 20px;
   margin-left: 119px;
-  background-color: whitesmoke; }
+  background-color: whitesmoke;
+  cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */

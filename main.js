@@ -1,4 +1,6 @@
 /*jshint esversion: 6 */
+
+// function to load cards onto DOM
 let personDetails=[];
 (() =>{
     const $employeeData = "https://randomuser.me/api/?results=12&nat=us";
@@ -31,9 +33,7 @@ let personDetails=[];
         let lastNameUpper= employee.name.last;
         
 
-        // firstNameUpper= firstNameUpper.charAt(0).toUpperCase() + firstNameUpper.slice(1);
-        // lastNameUpper= lastNameUpper.charAt(0).toUpperCase() + lastNameUpper.slice(1);
-        // let nameUpper= firstNameUpper + " " + lastNameUpper;
+        
         name.innerText= capital(firstNameUpper, lastNameUpper);
         detailsDiv.appendChild(name).classList.add("nameBold");
         //console.log(name);
@@ -55,27 +55,49 @@ let personDetails=[];
        
         }
 //function to capitalise city name
-        // function titleCase(city){
-        //    let str= city.split(' ');
-        //    for (i=0; i< str.length; i++){
-        //       str[i]= str[i].charAt(0).toUpperCase() + str[i].slice(1);
+         function titleCase(city){
+            let str= city.split(' ');
+            for (i=0; i< str.length; i++){
+               str[i]= str[i].charAt(0).toUpperCase() + str[i].slice(1);
 
-        //    }
-        //    return str.join(' ');
-        // }
+            }
+          return str.join(' ');
+         }
 
 // get info from api
     $.getJSON($employeeData, displayEmployees);
+
+    //search listener and function
+     let search=document.getElementById("search");
+         search.addEventListener("keyup",(event) =>{
+             //let search=document.getElementById("search")
+             let searchTerm =search.value;
+             searchTerm=searchTerm.toLowerCase();
+             console.log(personDetails[0].name.first);
+
+             for (k=0; k<personDetails.length; k++){
+                 console.log(personDetails[k].name.first);
+                let getlist =document.getElementsByClassName("card");
+                let getCard = getlist[k].getAttribute("data-cardnumber");
+                     console.log(getCard);
+                     console.log(personDetails[k].login.username);
+                 if(personDetails[k].name.first.indexOf(searchTerm) && personDetails[k].name.last.indexOf(searchTerm) && personDetails[k].login.username.indexOf(searchTerm)){
+                     
+                     getlist[k].style.display="none";
+                 }
+
+             } //end loop
+         });  // search
     
       
-})();
-//function to capitalise city name and concatenate
+})(); // displayemployees
+//function to capitalise employee  name and concatenate
 function capital(firstNameUpper, lastNameUpper){
     firstNameUpper= firstNameUpper.charAt(0).toUpperCase() + firstNameUpper.slice(1);
     lastNameUpper= lastNameUpper.charAt(0).toUpperCase() + lastNameUpper.slice(1);
     let nameUpper= firstNameUpper + " " + lastNameUpper;
     return nameUpper;
-}
+}//end capital
 
 
 //function to capitalise city name
@@ -86,18 +108,19 @@ function titleCase(city){
 
     }
     return str.join(' ');
- }
+ }//end titleCase
  function address(cardNum){
     let address=  personDetails[cardNum].location.street + ", " + personDetails[cardNum].location.state +" "+ personDetails[cardNum].location.postcode;
 console.log(titleCase(address));
     return titleCase(address); 
 
-}
+}//end address
 //listener on cards to prompt overlay
 let modal = document.getElementById("modal");
 let modalDetails= document.getElementById("modalDetails");
 //let span = document.getElementById("close");
 
+// function to display employee details in modal   MAJOR FUNCTION
 function moreDetails(cardNum){
     //clear modal of children
      while (modalDetails.firstChild) {
@@ -176,8 +199,9 @@ function moreDetails(cardNum){
      next.innerHTML="next >";
      // listener on buttons
      next.addEventListener("click",(event)=>{
+         console.log (cardNum++);
         //  console.log("going from card " + cardNum + " to card " + cardNum++);
-        moreDetails(cardNum++);
+        moreDetails(cardNum= (cardNum ++));
      });
      }
     
@@ -193,13 +217,15 @@ function moreDetails(cardNum){
 /*$( document ).ready(function() {
 let cardList=document.getElementsByClassName("card");
 console.log(cardList.length);
-console.log(cardList);*/
-// for( var j=0; j<cardList.length; j++){
-//     console.log(cardlist.length);
-//     cardList[i].addEventListener('click', (moreDetails));
-// }
-// }); 
+console.log(cardList);
+for( var j=0; j<cardList.length; j++){
+    console.log(cardlist.length);
+    cardList[i].addEventListener('click', (moreDetails));
+ }
+ }); */
 
+
+// function change to prev or next card when modal is open
 let cardListener= document.getElementById("main");
     cardListener.addEventListener("click", (event) =>{
         modal.style.display="block";

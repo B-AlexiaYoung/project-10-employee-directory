@@ -7,6 +7,7 @@
     height:150px;
     border: 1px solid;
     display:inline-flex;
+    border-radius:10px;
     //float:left;
     //margin:20px 30px;
 }
@@ -70,12 +71,17 @@ p{
     margin: 15% auto; /* 15% from the top and centered */
     padding: 10px;
     border: 1px solid #888;
-    width: 30%; 
+    //width: 30%; 
+    width: 95%;
     height:60%;
     display:none;
     z-index:1001;
     border-radius:10px;
     font-size:14px;
+    @include mediaQry(medium){
+        width: 240px;
+    }
+    
 }
 
 #close {

@@ -4,9 +4,11 @@
 }
 
     
-.search{
+#search{
     width:95%;
+    height:30px;
     border:1 px solid;
+    border-radius:5px;
     @include mediaQry(medium){
     width:50% ;
   }
@@ -40,20 +42,21 @@ main{
 
 }
 .nav1{
-    border: none;
+    border: .05px solid grey;
     display: inline-flex;
     width:60px;
     height:20px;
     background-color:whitesmoke;
-    
+    cursor: pointer;
 
 }
 .nav2{
-    border: none;
+    border: .05px solid grey;
     display:inline-flex;
     width:60px;
     height:20px;
     margin-left:119px;
     background-color:whitesmoke;
+    cursor: pointer;
 
 }

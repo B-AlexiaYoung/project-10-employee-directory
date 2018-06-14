@@ -1,4 +1,6 @@
 //media quieries
+
+
 @mixin mediaQry($break){
     @if $break =="medium"{ 
         @media(min-width: $breakpoint-medium){
