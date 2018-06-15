@@ -8,7 +8,7 @@
         @content;
 }}
 @else if $break =="large"{
-    @media(min-width: $breakpoint-large){
+    @media(max-width: $breakpoint-large )and (max-width:$breakpoint-large){
         @content;
     }
 }@else if $break =="xlarge"{

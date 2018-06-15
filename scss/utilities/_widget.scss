@@ -23,7 +23,7 @@
 }
 .detailRound{
 margin-top:20px;
-margin-left:75px;
+//margin-left:75px;
 border-radius:50%;
     height: 90px;
     width: 90px;
@@ -34,7 +34,7 @@ border-radius:50%;
 p{
     display:flex;
     margin:10px;
-    width: 200px;
+    //width: 200px;
     height: 20px;
     justify-content: center;
     //align-content:space-between;
@@ -82,9 +82,10 @@ p{
     z-index:1001;
     border-radius:10px;
     font-size:14px;
+    text-align:center;
     @include mediaQry(medium){
         width: 270px;
-        //height:60%;
+        height:350px;
 
     }
     
