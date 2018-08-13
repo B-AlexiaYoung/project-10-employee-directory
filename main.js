@@ -174,7 +174,7 @@ function moreDetails(cardNum){
 
      // get DOB
      let dob=document.createElement("p");
-     let smDate=personDetails[cardNum].dob;
+     let smDate=personDetails[cardNum].dob.date;
 
      // chop off unneeded bits  and split; then reassemble date
      smDate=smDate.slice(2, 10).split("-");
