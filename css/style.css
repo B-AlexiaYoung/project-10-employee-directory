@@ -2,9 +2,10 @@
   font-size: 14px;
   width: 300px;
   height: 150px;
-  border: 1px solid;
+  border: 1px solid #274156;
   display: inline-flex;
-  border-radius: 10px; }
+  border-radius: 10px;
+  box-shadow: 5px 5px #274156; }
   @media (min-width: 767px) {
     .card {
       width: 320px; } }
@@ -103,7 +104,8 @@ p {
   grid-template-areas: "header" " main"; }
 
 .mainWrapper {
-  margin: 0 auto; }
+  margin: 0 auto;
+  background-color: #D0CCD0; }
 
 main {
   display: grid;

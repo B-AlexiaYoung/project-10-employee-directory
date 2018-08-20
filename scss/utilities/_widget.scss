@@ -5,9 +5,10 @@
     font-size: 14px;
     width: 300px;
     height:150px;
-    border: 1px solid;
+    border: 1px solid $deepblue;
     display:inline-flex;
     border-radius:10px;
+    box-shadow: 5px 5px $deepblue;
     @include mediaQry(medium){
         width: 320px;
  
