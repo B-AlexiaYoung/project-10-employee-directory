@@ -1,6 +1,7 @@
 //base styles
 .body{
     font-family: 'Zilla Slab', serif;
+
 }
 
     
@@ -23,19 +24,16 @@
     grid-template-areas: 
     "header"
     " main" ;
-    
 }
 .mainWrapper{
     
     margin:0 auto;
-    background-color: $duskygrey;
    
 }
 main{
     display:grid;
     grid-template-columns: repeat(auto-fill, 320px);
     grid-gap: 20px 20px;
-    
     }
 
 .card:hover{
@@ -63,6 +61,7 @@ main{
     height:20px;
     margin-left:119px;
     background-color:whitesmoke;
+
     cursor: pointer;
 
 }

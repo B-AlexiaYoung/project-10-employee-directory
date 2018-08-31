@@ -22,6 +22,8 @@ html {
 
 body {
   margin: 0;
+  /* this is added for this project not normaly in normalise*/
+  background-color: #D0CCD0;   
 }
 
 /**
